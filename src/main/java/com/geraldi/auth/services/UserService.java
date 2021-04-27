@@ -32,13 +32,13 @@ public class UserService implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = repository.findByEmail(username);
+	public UserDetails loadUserByUsername(String usuarioEmail) throws UsernameNotFoundException {
+		User user = repository.findByUsuarioEmail(usuarioEmail);
 		if (user == null) {
-			logger.error("user not found: " + username);
+			logger.error("user not found: " + usuarioEmail);
 			throw new UsernameNotFoundException("email not found");
 		}
-		logger.info("user found: " + username);
+		logger.info("user found: " + usuarioEmail + " id: " + user.getUsuarioId().toString());
 		return user;
 	}
 

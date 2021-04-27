@@ -7,47 +7,47 @@ import com.geraldi.auth.entities.User;
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
-	private String name;
-	private String email;
+	private Long usuarioId;
+	private String usuarioNome;
+	private String usuarioEmail;
 
 	public UserDTO() {
 	}
 
-	public UserDTO(Long id, String name, String email) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
+	public UserDTO(Long usuarioId, String usuarioNome, String usuarioEmail) {
+		this.usuarioId = usuarioId;
+		this.usuarioNome = usuarioNome;
+		this.usuarioEmail = usuarioEmail;
 	}
 
 	public UserDTO(User entity) {
-		id = entity.getId();
-		name = entity.getName();
-		email = entity.getEmail();
+		usuarioId = entity.getUsuarioId();
+		usuarioNome = entity.getUsuarioNome();
+		usuarioEmail = entity.getUsuarioEmail();
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUsuarioId() {
+		return usuarioId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsuarioNome() {
+		return usuarioNome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsuarioNome(String usuarioNome) {
+		this.usuarioNome = usuarioNome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuarioEmail() {
+		return usuarioEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuarioEmail(String usuarioEmail) {
+		this.usuarioEmail = usuarioEmail;
 	}
 
 }
