@@ -3,21 +3,28 @@ package com.geraldi.auth.entities;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "USUARIO")
 public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long usuarioId;
@@ -38,6 +45,10 @@ public class User implements UserDetails, Serializable {
 	private String usuarioFoto;
 	private String usuarioTokenMps;
 
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PERFIL_ID")
+	private Profile roles = new Profile();
+	
 	public User() {
 	}
 
@@ -227,13 +238,14 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		return roles
+				.stream().map(role -> new SimpleGrantedAuthority(role.getAuthotity()))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return usuarioSenha;
 	}
 
 	@Override

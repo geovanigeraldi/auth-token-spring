@@ -23,6 +23,9 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository repository;
+	
+	//@Autowired
+	//private BCryptPasswordEncoder passwordEncoder;
 
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
@@ -38,7 +41,9 @@ public class UserService implements UserDetailsService {
 			logger.error("user not found: " + usuarioEmail);
 			throw new UsernameNotFoundException("email not found");
 		}
-		logger.info("user found: " + usuarioEmail + " id: " + user.getUsuarioId().toString());
+		logger.info("user found: " + user.getUsername() + " id: " + user.getUsuarioId().toString());
+		//logger.info("senha: " + passwordEncoder.encode(user.getUsuarioSenha()));
+		//logger.info("senha: " + user.getPassword());
 		return user;
 	}
 
