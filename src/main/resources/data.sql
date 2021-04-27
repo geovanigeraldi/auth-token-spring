@@ -1,0 +1,1 @@
+insert into usuarios (name,email,password) values ('geovani', 'geovani.geraldi@email.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
