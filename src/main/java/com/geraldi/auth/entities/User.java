@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,8 +47,9 @@ public class User implements UserDetails, Serializable {
 	private String usuarioTokenMps;
 
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PERFIL_ID")
-	private Profile roles = new Profile();
+	@JoinTable(name = "PERFIL",
+	joinColumns = @JoinColumn(name = "perfil_id"))
+	private Set<Perfil> roles = new HashSet<>();
 	
 	public User() {
 	}

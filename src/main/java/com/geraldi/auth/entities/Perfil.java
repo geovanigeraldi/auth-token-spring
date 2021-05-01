@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "PERFIL")
-public class Profile implements Serializable {
+public class Perfil implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -20,10 +20,10 @@ public class Profile implements Serializable {
 	private String perfilDescricao;
 	private String authotity;
 	
-	public Profile() {		
+	public Perfil() {		
 	}
 
-	public Profile(Integer perfilId, String perfilDescricao, String authotity) {
+	public Perfil(Integer perfilId, String perfilDescricao, String authotity) {
 		this.perfilId = perfilId;
 		this.perfilDescricao = perfilDescricao;
 		this.authotity = authotity;
@@ -69,7 +69,7 @@ public class Profile implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Profile other = (Profile) obj;
+		Perfil other = (Perfil) obj;
 		if (perfilId == null) {
 			if (other.perfilId != null)
 				return false;
